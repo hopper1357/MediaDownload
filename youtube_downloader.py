@@ -44,8 +44,8 @@ def download_media(url, download_type='video', is_playlist=False):
 if __name__ == '__main__':
     create_download_directories()
 
-    parser = argparse.ArgumentParser(description="Download YouTube videos or playlists.")
-    parser.add_argument("url", help="The URL of the YouTube video or playlist.")
+    parser = argparse.ArgumentParser(description="Download YouTube videos, playlists, or search for media.")
+    parser.add_argument("query", help="The URL or search term for the YouTube media.")
     parser.add_argument("-t", "--type", choices=['video', 'audio'], default='video',
                         help="The download type (video or audio). Defaults to video.")
     parser.add_argument("-p", "--playlist", action="store_true",
@@ -54,4 +54,9 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    download_media(args.url, args.type, args.playlist)
+    # If the query doesn't look like a URL, treat it as a search term.
+    query = args.query
+    if not query.lower().startswith('http'):
+        query = f"ytsearch:{query}"
+
+    download_media(query, args.type, args.playlist)
