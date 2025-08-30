@@ -16,7 +16,7 @@ def download_media(url, download_type='video', is_playlist=False):
     output_template = os.path.join(VIDEO_DOWNLOAD_DIR, '%(title)s.%(ext)s')
     ydl_opts = {
         'outtmpl': output_template,
-        'ignoreerrors': not is_playlist, # Continue on error if it's a playlist
+        'ignoreerrors': is_playlist, # Continue on error if it's a playlist
         'nocheckcertificate': True,
     }
 
