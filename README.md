@@ -1,6 +1,6 @@
 # YouTube Downloader
 
-A simple but powerful command-line tool to download videos and audio from YouTube. You can download individual media, entire playlists, or even search for media directly from the command line.
+A simple but powerful tool to download videos and audio from YouTube. It can be run as a command-line tool or as a graphical user interface (GUI).
 
 ## Features
 
@@ -11,10 +11,13 @@ A simple but powerful command-line tool to download videos and audio from YouTub
 
 ## Requirements
 
-To use this script, you will need to have Python 3 installed, along with the following libraries:
-
--   `yt-dlp`: The core library used for interacting with YouTube.
--   `ffmpeg`: Required for extracting audio and converting it to MP3.
+-   **Python 3:** This script is written in Python 3.
+-   **Tkinter (for GUI):** The graphical interface requires Tkinter. Most Python installations include this by default. If yours does not, you may need to install it separately. For example, on Debian/Ubuntu:
+    ```bash
+    sudo apt-get install python3-tk
+    ```
+-   **yt-dlp:** The core library used for interacting with YouTube.
+-   **ffmpeg:** Required for extracting audio and converting it to MP3.
 
 You can install `yt-dlp` using pip:
 ```bash
@@ -25,12 +28,22 @@ You will need to install `ffmpeg` through your system's package manager (e.g., `
 
 ## Usage
 
-The script is run from the command line and accepts a URL or a search term as its main argument.
+This program can be run in two ways: as a Graphical User Interface (GUI) or as a Command-Line Interface (CLI).
+
+### GUI Mode
+
+To run the graphical interface, execute the `youtube_downloader_gui.py` script:
+```bash
+python3 youtube_downloader_gui.py
+```
+A window will appear with fields for the URL/search term and options for the download type.
+
+### Command-Line Mode
 
 ### Command Syntax
 
 ```bash
-python youtube_downloader.py [query] [options]
+python3 downloader_cli.py [query] [options]
 ```
 
 ### Arguments and Options
@@ -43,20 +56,20 @@ python youtube_downloader.py [query] [options]
 
 **1. Download a single video:**
 ```bash
-python youtube_downloader.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+python3 downloader_cli.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 ```
 
 **2. Search for a song and download the audio:**
 ```bash
-python youtube_downloader.py "Rick Astley - Never Gonna Give You Up" -t audio
+python3 downloader_cli.py "Rick Astley - Never Gonna Give You Up" -t audio
 ```
 
 **3. Download an entire playlist as videos:**
 ```bash
-python youtube_downloader.py "https://www.youtube.com/playlist?list=PL-wA2v_2csb-TICOtTzI--uY2P_ve_t2v" -p
+python3 downloader_cli.py "https://www.youtube.com/playlist?list=PL-wA2v_2csb-TICOtTzI--uY2P_ve_t2v" -p
 ```
 
 **4. Download an entire playlist as audio MP3s:**
 ```bash
-python youtube_downloader.py "https://www.youtube.com/playlist?list=PL-wA2v_2csb-TICOtTzI--uY2P_ve_t2v" -p -t audio
+python3 downloader_cli.py "https://www.youtube.com/playlist?list=PL-wA2v_2csb-TICOtTzI--uY2P_ve_t2v" -p -t audio
 ```
